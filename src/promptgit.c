@@ -6,7 +6,7 @@
 /*   By: thugo <thugo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/24 19:44:56 by thugo             #+#    #+#             */
-/*   Updated: 2017/10/25 01:25:54 by thugo            ###   ########.fr       */
+/*   Updated: 2017/10/25 01:47:59 by thugo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ static char	*path_get_back(char *cwd)
 	return (prevcwd);
 }
 
-char		*promptgit_get(t_data *data, const char *cwd)
+char		*promptgit_get(const char *cwd)
 {
 	char	*branch;
 	char	*fbranch;
@@ -75,7 +75,7 @@ char		*promptgit_get(t_data *data, const char *cwd)
 	free(prevcwd);
 	if (branch)
 	{
-		if (!(fbranch = ft_strfjoin("git:(\e[91m", 0, branch, 1)))
+		if (!(fbranch = ft_strfjoin("git:(\e[95;1m", 0, branch, 1)))
 			exit(EXIT_FAILURE);
 		if (!(fbranch = ft_strfjoin(fbranch, 1, "\e[0m) ", 0)))
 			exit(EXIT_FAILURE);

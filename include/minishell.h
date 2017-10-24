@@ -6,7 +6,7 @@
 /*   By: thugo <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/09 14:59:46 by thugo             #+#    #+#             */
-/*   Updated: 2017/10/24 20:39:24 by thugo            ###   ########.fr       */
+/*   Updated: 2017/10/25 01:48:12 by thugo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int				builtins(t_data *data, const char *cmd, int argc, char **argv);
 void			loop(t_data *data);
 void			ms_cerror(char *errmsg);
 void			prompt(t_data *data);
-char			*promptgit_get(t_data *data, const char *cwd);
+char			*promptgit_get(const char *cwd);
 void			parse_line(t_cmd ***cmds, char *line);
 
 #endif
