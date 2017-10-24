@@ -6,7 +6,7 @@
 /*   By: thugo <thugo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/18 16:29:20 by thugo             #+#    #+#             */
-/*   Updated: 2017/10/24 01:47:14 by thugo            ###   ########.fr       */
+/*   Updated: 2017/10/24 17:38:59 by thugo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,5 +24,6 @@ int	main(int argc, char **argv, char **env)
 	env_init(&data, env);
 	while (!data.exit)
 		prompt(&data);
+	env_destroy(&data);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: thugo <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/10 21:13:57 by thugo             #+#    #+#             */
-/*   Updated: 2017/10/24 01:33:47 by thugo            ###   ########.fr       */
+/*   Updated: 2017/10/24 16:35:54 by thugo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ typedef struct	s_env
 typedef struct	s_data
 {
 	t_list	*env;
+	char	**envtab;
 	char	exit;
 }				t_data;
 
