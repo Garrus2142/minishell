@@ -6,7 +6,7 @@
 #    By: thugo <thugo@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/10/18 15:00:09 by thugo             #+#    #+#              #
-#    Updated: 2017/10/18 16:52:11 by thugo            ###   ########.fr        #
+#    Updated: 2017/10/24 01:05:15 by thugo            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ NAME = minishell
 FLAGS = -Werror -Wextra -Wall
 
 #Sources
-SRC = main.c
+SRC = main.c env.c prompt.c parser.c
 
 #Builtins
 BUILTINS = 
@@ -31,6 +31,7 @@ OBJ = $(addprefix obj/, $(SRC:.c=.o))
 all: $(NAME)
 
 $(NAME): $(OBJ)
+	@printf "\n"
 	@make -C libft
 	@printf "[\e[33m$(NAME)\e[0m] \e[34mBuild:\e[0m $(NAME)"
 	@gcc -Llibft -lft -o $(NAME) $(OBJ)
@@ -44,9 +45,9 @@ obj/%.o: src/%.c
 	@printf "[\e[33m$(NAME)\e[0m] \e[34mCompile:\e[0m $^\e[K\r"
 	@mkdir -p $(dir $@)
 ifeq ($(DEBUG), 1)
-	@gcc -g -I includes -I libft -c $^ -o $@
+	@gcc -g -I include -I libft -c $^ -o $@
 else
-	@gcc $(FLAGS) -I includes -I libft -c $^ -o $@
+	@gcc $(FLAGS) -I include -I libft -c $^ -o $@
 endif
 	@printf "[\e[33m$(NAME)\e[0m] \e[34mCompile:\e[0m $^ [\e[32mOK\e[0m]\e[K\r"
 
