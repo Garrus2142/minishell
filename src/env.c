@@ -6,14 +6,14 @@
 /*   By: thugo <thugo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/18 16:29:10 by thugo             #+#    #+#             */
-/*   Updated: 2017/10/24 18:04:04 by thugo            ###   ########.fr       */
+/*   Updated: 2017/10/25 01:32:02 by thugo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include "minishell.h"
 
-void	env_make_array(t_data *data)
+void		env_make_array(t_data *data)
 {
 	t_list	*cur;
 	size_t	i;
