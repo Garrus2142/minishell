@@ -6,7 +6,7 @@
 /*   By: thugo <thugo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/23 21:22:12 by thugo             #+#    #+#             */
-/*   Updated: 2017/10/24 01:56:57 by thugo            ###   ########.fr       */
+/*   Updated: 2017/10/24 18:15:50 by thugo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ static void	parse_cmd(t_cmd *cmd, char *fullcmd)
 	ft_tabptrfree((void ***)&cmdsplit);
 }
 
-void		parse_line(t_data *data, t_cmd ***cmds, char *line)
+void		parse_line(t_cmd ***cmds, char *line)
 {
 	char	**fullcmds;
 	int		i;
