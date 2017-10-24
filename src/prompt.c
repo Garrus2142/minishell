@@ -6,12 +6,13 @@
 /*   By: thugo <thugo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/23 19:48:01 by thugo             #+#    #+#             */
-/*   Updated: 2017/10/24 02:07:26 by thugo            ###   ########.fr       */
+/*   Updated: 2017/10/25 01:28:50 by thugo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 #include <stdlib.h>
+#include <sys/param.h>
 #include "libft.h"
 #include "minishell.h"
 
@@ -30,20 +31,40 @@ static void	free_cmds(t_cmd ***cmds)
 	free(*cmds);
 }
 
-void	prompt(t_data *data)
+static void	print_prompt(t_data *data)
+{
+	char	cwd[MAXPATHLEN];
+	char	*basename;
+	char	*git;
+
+	if (!(basename = ft_basename(getcwd(cwd, MAXPATHLEN))))
+		exit(EXIT_FAILURE);
+	if (!(git = promptgit_get(data, cwd)))
+		exit(EXIT_FAILURE);
+	ft_printf("%S  \e[1m%s\e[0m %s", L"\e[2m➜\e[0m", basename, git);
+	free(basename);
+	free(git);
+}
+
+void		prompt(t_data *data)
 {
 	char	*line;
 	t_cmd	**cmds;
 
 	line = NULL;
-	ft_printf("$>");
+	print_prompt(data);
 	if (ft_gnl(STDIN_FILENO, &line) < 1)
 	{
 		data->exit = 1;
 		return ;
 	}
-	parse_line(data, &cmds, line);
-	int i = 0;
+	parse_line(&cmds, line);
+	
+	free_cmds(&cmds);
+	free(line);
+}
+
+/*int i = 0;
 	int u = 0;
 	while (cmds[i])
 	{
@@ -56,7 +77,4 @@ void	prompt(t_data *data)
 		}
 		ft_printf("\n");
 		++i;
-	}
-	free_cmds(&cmds);
-	free(line);
-}
+	}*/

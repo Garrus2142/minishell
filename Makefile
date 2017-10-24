@@ -6,7 +6,7 @@
 #    By: thugo <thugo@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/10/18 15:00:09 by thugo             #+#    #+#              #
-#    Updated: 2017/10/24 18:03:43 by thugo            ###   ########.fr        #
+#    Updated: 2017/10/24 20:40:29 by thugo            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ NAME = minishell
 FLAGS = -Werror -Wextra -Wall
 
 #Sources
-SRC = main.c env.c envaccess.c prompt.c parser.c
+SRC = main.c env.c envaccess.c prompt.c promptgit.c parser.c
 
 #Builtins
 BUILTINS = 
