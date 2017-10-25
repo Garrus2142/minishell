@@ -6,7 +6,7 @@
 /*   By: thugo <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/10 21:13:57 by thugo             #+#    #+#             */
-/*   Updated: 2017/10/24 16:35:54 by thugo            ###   ########.fr       */
+/*   Updated: 2017/10/25 03:03:38 by thugo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ typedef struct	s_data
 	t_list	*env;
 	char	**envtab;
 	char	exit;
+	int		exec_stat;
 }				t_data;
 
 typedef struct	s_cmd
@@ -33,5 +34,11 @@ typedef struct	s_cmd
 	char	*name;
 	char	**args;
 }				t_cmd;
+
+typedef struct	s_builtin
+{
+	char	*name;
+	int		(*fn)(t_data*, int, char**);
+}				t_builtin;
 
 #endif

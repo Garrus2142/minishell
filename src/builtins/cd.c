@@ -1,29 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   cd.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: thugo <thugo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/10/18 16:29:20 by thugo             #+#    #+#             */
-/*   Updated: 2017/10/25 02:39:24 by thugo            ###   ########.fr       */
+/*   Created: 2017/10/25 02:43:07 by thugo             #+#    #+#             */
+/*   Updated: 2017/10/25 02:47:11 by thugo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
-#include <stdio.h>
+#include <unistd.h>
 #include "minishell.h"
 
-int	main(int argc, char **argv, char **env)
+int		builtin_cd(t_data *data, int argc, char **argv)
 {
-	t_data	data;
-
-	(void)argv;
-	(void)argc;
-	ft_bzero(&data, sizeof(t_data));
-	env_init(&data, env);
-	while (!data.exit)
-		prompt(&data);
-	env_destroy(&data);
+	if (argc > 0)
+		chdir(argv[0]);
 	return (0);
 }

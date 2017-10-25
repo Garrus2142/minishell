@@ -6,7 +6,7 @@
 /*   By: thugo <thugo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/23 19:48:01 by thugo             #+#    #+#             */
-/*   Updated: 2017/10/25 01:48:44 by thugo            ###   ########.fr       */
+/*   Updated: 2017/10/25 01:59:17 by thugo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ void		prompt(t_data *data)
 {
 	char	*line;
 	t_cmd	**cmds;
+	int		i;
 
 	line = NULL;
 	print_prompt();
@@ -59,7 +60,9 @@ void		prompt(t_data *data)
 		return ;
 	}
 	parse_line(&cmds, line);
-	
+	i = 0;
+	while (cmds[i])
+		exec_execute(data, cmds[i++]);
 	free_cmds(&cmds);
 	free(line);
 }

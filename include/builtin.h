@@ -1,29 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   builtin.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: thugo <thugo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/10/18 16:29:20 by thugo             #+#    #+#             */
-/*   Updated: 2017/10/25 02:39:24 by thugo            ###   ########.fr       */
+/*   Created: 2017/10/25 02:03:36 by thugo             #+#    #+#             */
+/*   Updated: 2017/10/25 02:46:45 by thugo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-#include <stdio.h>
-#include "minishell.h"
+#ifndef BUILTIN_H
+# define BUILTIN_H
 
-int	main(int argc, char **argv, char **env)
-{
-	t_data	data;
+# include "types.h"
 
-	(void)argv;
-	(void)argc;
-	ft_bzero(&data, sizeof(t_data));
-	env_init(&data, env);
-	while (!data.exit)
-		prompt(&data);
-	env_destroy(&data);
-	return (0);
-}
+int		builtin_pwd(t_data *data, int argc, char **argv);
+int		builtin_exit(t_data *data, int argc, char **argv);
+int		builtin_cd(t_data *data, int argc, char **argv);
+
+#endif
