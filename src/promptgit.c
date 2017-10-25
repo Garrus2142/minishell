@@ -6,7 +6,7 @@
 /*   By: thugo <thugo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/24 19:44:56 by thugo             #+#    #+#             */
-/*   Updated: 2017/10/25 01:47:59 by thugo            ###   ########.fr       */
+/*   Updated: 2017/10/25 03:34:26 by thugo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,11 @@ static char	*get_branch(const char *path)
 	ft_bzero(buf, 255);
 	if (!(gitpath = ft_strjoin(path, "/.git/HEAD")))
 		exit(EXIT_FAILURE);
-	if (!(gitfd = open(gitpath, O_RDONLY)))
+	if ((gitfd = open(gitpath, O_RDONLY)) < 0)
+	{
+		free(gitpath);
 		return (NULL);
+	}
 	if (read(gitfd, buf, 255) >= 0)
 	{
 		if (!(gitbranch = ft_basename(buf)))
@@ -46,13 +49,17 @@ static char	*path_get_back(char *cwd)
 	char	*prevcwd;
 	size_t	len;
 
+	prevcwd = NULL;
 	len = ft_strlen(cwd);
 	prev = ft_strrchr(cwd, '/');
 	if (!prev || (prev == cwd && len <= 1))
+	{
+		free(cwd);
 		return (NULL);
+	}
 	if (!(prev - cwd) && !(prevcwd = ft_strdup("/")))
 		exit(EXIT_FAILURE);
-	else if (!(prevcwd = ft_strndup(cwd, prev - cwd)))
+	if (!prevcwd && !(prevcwd = ft_strndup(cwd, prev - cwd)))
 		exit(EXIT_FAILURE);
 	free(cwd);
 	return (prevcwd);
@@ -69,10 +76,12 @@ char		*promptgit_get(const char *cwd)
 		exit(EXIT_FAILURE);
 	while (!branch && prevcwd)
 	{
+		ft_printf(">> %s$\n", prevcwd);
 		if ((prevcwd = path_get_back(prevcwd)))
 			branch = get_branch(prevcwd);
 	}
-	free(prevcwd);
+	if (prevcwd)
+		free(prevcwd);
 	if (branch)
 	{
 		if (!(fbranch = ft_strfjoin("git:(\e[95;1m", 0, branch, 1)))
