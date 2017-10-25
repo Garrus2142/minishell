@@ -6,7 +6,7 @@
 /*   By: thugo <thugo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/23 19:48:01 by thugo             #+#    #+#             */
-/*   Updated: 2017/10/25 15:29:16 by thugo            ###   ########.fr       */
+/*   Updated: 2017/10/25 15:40:48 by thugo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ static void	free_cmds(char ****cmds)
 	free(*cmds);
 }
 
-static void	print_prompt(void)
+static void	print_prompt(t_data *data)
 {
 	char	cwd[MAXPATHLEN];
 	char	*basename;
@@ -40,7 +40,8 @@ static void	print_prompt(void)
 		exit(EXIT_FAILURE);
 	if (!(git = promptgit_get(cwd)))
 		exit(EXIT_FAILURE);
-	ft_printf("%S  \e[1m%s\e[0m %s", L"\e[92m➜\e[0m", basename, git);
+	ft_printf("\e[%sm%S\e[0m  \e[1m%s\e[0m %s", data->exec_stat ?
+		"91" : "92", L"➜", basename, git);
 	free(basename);
 	free(git);
 }
@@ -52,7 +53,7 @@ void		prompt(t_data *data)
 	int		i;
 
 	line = NULL;
-	print_prompt();
+	print_prompt(data);
 	if (ft_gnl(STDIN_FILENO, &line) < 1)
 	{
 		data->exit = 1;
