@@ -6,7 +6,7 @@
 /*   By: thugo <thugo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/25 02:35:33 by thugo             #+#    #+#             */
-/*   Updated: 2017/10/25 15:32:32 by thugo            ###   ########.fr       */
+/*   Updated: 2017/10/26 01:46:14 by thugo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,8 @@
 
 int		builtin_exit(t_data *data, int argc, char **argv)
 {
-	(void)data;
 	(void)argc;
 	(void)argv;
-	close(STDIN_FILENO);
+	data->exit = 1;
 	return (0);
 }
