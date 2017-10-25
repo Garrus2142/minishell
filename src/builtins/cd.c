@@ -6,7 +6,7 @@
 /*   By: thugo <thugo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/25 02:43:07 by thugo             #+#    #+#             */
-/*   Updated: 2017/10/25 02:47:11 by thugo            ###   ########.fr       */
+/*   Updated: 2017/10/25 15:32:51 by thugo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,8 @@
 
 int		builtin_cd(t_data *data, int argc, char **argv)
 {
-	if (argc > 0)
-		chdir(argv[0]);
+	(void)data;
+	if (argc > 1)
+		chdir(argv[1]);
 	return (0);
 }

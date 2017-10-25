@@ -6,7 +6,7 @@
 /*   By: thugo <thugo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/25 01:55:07 by thugo             #+#    #+#             */
-/*   Updated: 2017/10/25 02:42:24 by thugo            ###   ########.fr       */
+/*   Updated: 2017/10/25 15:21:02 by thugo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include "libft.h"
 #include "minishell.h"
 
-void	exec_execute(t_data *data, t_cmd *cmd)
+void	exec_execute(t_data *data, char **cmd)
 {
 	if (builtin_execute(data, cmd))
 		return ;
@@ -23,6 +23,6 @@ void	exec_execute(t_data *data, t_cmd *cmd)
 	{
 		data->exec_stat = 127;
 		ft_dprintf(STDERR_FILENO, "minishell: command not found: %s\n",
-			cmd->name);
+			cmd[0]);
 	}
 }

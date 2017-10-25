@@ -6,7 +6,7 @@
 /*   By: thugo <thugo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/24 19:44:56 by thugo             #+#    #+#             */
-/*   Updated: 2017/10/25 03:34:26 by thugo            ###   ########.fr       */
+/*   Updated: 2017/10/25 15:29:37 by thugo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,6 @@ char		*promptgit_get(const char *cwd)
 		exit(EXIT_FAILURE);
 	while (!branch && prevcwd)
 	{
-		ft_printf(">> %s$\n", prevcwd);
 		if ((prevcwd = path_get_back(prevcwd)))
 			branch = get_branch(prevcwd);
 	}

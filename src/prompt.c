@@ -6,7 +6,7 @@
 /*   By: thugo <thugo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/23 19:48:01 by thugo             #+#    #+#             */
-/*   Updated: 2017/10/25 01:59:17 by thugo            ###   ########.fr       */
+/*   Updated: 2017/10/25 15:29:16 by thugo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,15 +16,14 @@
 #include "libft.h"
 #include "minishell.h"
 
-static void	free_cmds(t_cmd ***cmds)
+static void	free_cmds(char ****cmds)
 {
 	int	i;
 
 	i = 0;
 	while ((*cmds)[i])
 	{
-		free((*cmds)[i]->name);
-		ft_tabptrfree((void ***)&((*cmds)[i]->args));
+		ft_tabptrfree((void ***)&((*cmds)[i]));
 		free((*cmds)[i]);
 		++i;
 	}
@@ -49,7 +48,7 @@ static void	print_prompt(void)
 void		prompt(t_data *data)
 {
 	char	*line;
-	t_cmd	**cmds;
+	char	***cmds;
 	int		i;
 
 	line = NULL;
@@ -57,6 +56,7 @@ void		prompt(t_data *data)
 	if (ft_gnl(STDIN_FILENO, &line) < 1)
 	{
 		data->exit = 1;
+		ft_putchar('\n');
 		return ;
 	}
 	parse_line(&cmds, line);

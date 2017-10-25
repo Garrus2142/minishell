@@ -6,7 +6,7 @@
 /*   By: thugo <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/10 21:13:57 by thugo             #+#    #+#             */
-/*   Updated: 2017/10/25 03:03:38 by thugo            ###   ########.fr       */
+/*   Updated: 2017/10/25 15:31:45 by thugo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,12 +28,6 @@ typedef struct	s_data
 	char	exit;
 	int		exec_stat;
 }				t_data;
-
-typedef struct	s_cmd
-{
-	char	*name;
-	char	**args;
-}				t_cmd;
 
 typedef struct	s_builtin
 {

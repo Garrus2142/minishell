@@ -6,7 +6,7 @@
 /*   By: thugo <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/09 14:59:46 by thugo             #+#    #+#             */
-/*   Updated: 2017/10/25 02:16:13 by thugo            ###   ########.fr       */
+/*   Updated: 2017/10/25 15:19:39 by thugo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 # define MINISHELL_H
 
 # define ENV(elem) ((t_env *)elem->content)
-# define CMD(elem) ((t_cmds *)elem->content)
 
 # include "types.h"
 
@@ -29,8 +28,8 @@ void			loop(t_data *data);
 void			ms_cerror(char *errmsg);
 void			prompt(t_data *data);
 char			*promptgit_get(const char *cwd);
-void			parse_line(t_cmd ***cmds, char *line);
-void			exec_execute(t_data *data, t_cmd *cmd);
-int				builtin_execute(t_data *data, t_cmd *cmd);
+void			parse_line(char ****cmds, char *line);
+void			exec_execute(t_data *data, char **cmd);
+int				builtin_execute(t_data *data, char **cmd);
 
 #endif
