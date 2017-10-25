@@ -6,7 +6,7 @@
 /*   By: thugo <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/09 14:59:46 by thugo             #+#    #+#             */
-/*   Updated: 2017/10/25 15:19:39 by thugo            ###   ########.fr       */
+/*   Updated: 2017/10/25 16:34:41 by thugo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,9 @@
 # define MINISHELL_H
 
 # define ENV(elem) ((t_env *)elem->content)
+
+# define ACCESS_EXIST	1
+# define ACCESS_EXEC	2
 
 # include "types.h"
 
@@ -31,5 +34,6 @@ char			*promptgit_get(const char *cwd);
 void			parse_line(char ****cmds, char *line);
 void			exec_execute(t_data *data, char **cmd);
 int				builtin_execute(t_data *data, char **cmd);
+char			access_check(const char *path);
 
 #endif
