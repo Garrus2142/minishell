@@ -6,7 +6,7 @@
 /*   By: thugo <thugo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/25 01:55:07 by thugo             #+#    #+#             */
-/*   Updated: 2017/10/25 21:17:39 by thugo            ###   ########.fr       */
+/*   Updated: 2017/10/25 21:44:00 by thugo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,4 +48,6 @@ void		exec_execute(t_data *data, char **cmd)
 		return ;
 	else if (ft_strchr(cmd[0], '/'))
 		data->exec_stat = execute(data, cmd);
+	else
+		ft_dprintf(2, "minishell: command not found: %s\n", cmd[0]);
 }
