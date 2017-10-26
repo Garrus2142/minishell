@@ -6,7 +6,7 @@
 /*   By: thugo <thugo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/23 19:48:01 by thugo             #+#    #+#             */
-/*   Updated: 2017/10/25 15:40:48 by thugo            ###   ########.fr       */
+/*   Updated: 2017/10/26 03:42:13 by thugo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,11 @@ void		prompt(t_data *data)
 	parse_line(&cmds, line);
 	i = 0;
 	while (cmds[i])
-		exec_execute(data, cmds[i++]);
+	{
+		if (cmds[i][0])
+			exec_execute(data, cmds[i]);
+		++i;
+	}
 	free_cmds(&cmds);
 	free(line);
 }
@@ -72,13 +76,13 @@ void		prompt(t_data *data)
 	int u = 0;
 	while (cmds[i])
 	{
-		ft_printf("Name: %s Args: ", cmds[i]->name);
+		ft_printf("Name: %s Args: ", cmds[i][0]);
 		u = 0;
-		while (cmds[i]->args[u])
+		while (cmds[i][u])
 		{
-			ft_printf("%s ", cmds[i]->args[u]);
+			ft_printf("%s ", cmds[i][u]);
 			++u;
 		}
 		ft_printf("\n");
 		++i;
-	}*/
+}*/

@@ -6,7 +6,7 @@
 /*   By: thugo <thugo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/23 21:22:12 by thugo             #+#    #+#             */
-/*   Updated: 2017/10/25 15:18:22 by thugo            ###   ########.fr       */
+/*   Updated: 2017/10/26 03:42:24 by thugo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,19 +22,17 @@ static void	parse_cmd(char ***cmd, char *fullcmd)
 
 	if (!(cmdsplit = ft_strsplit(fullcmd, ' ')))
 		exit(EXIT_FAILURE);
-	if ((len = ft_tabptrlen((void **)cmdsplit)))
+	len = ft_tabptrlen((void **)cmdsplit);
+	if (!(*cmd = (char **)malloc(sizeof(char *) * (len + 1))))
+		exit(EXIT_FAILURE);
+	i = 0;
+	while (i < len)
 	{
-		if (!(*cmd = (char **)malloc(sizeof(char *) * (len + 1))))
+		if (!((*cmd)[i] = ft_strdup(cmdsplit[i])))
 			exit(EXIT_FAILURE);
-		i = 0;
-		while (i < len)
-		{
-			if (!((*cmd)[i] = ft_strdup(cmdsplit[i])))
-				exit(EXIT_FAILURE);
-			++i;
-		}
-		(*cmd)[i] = NULL;
+		++i;
 	}
+	(*cmd)[i] = NULL;
 	ft_tabptrfree((void ***)&cmdsplit);
 }
 
