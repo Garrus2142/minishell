@@ -6,7 +6,7 @@
 /*   By: thugo <thugo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/18 16:29:20 by thugo             #+#    #+#             */
-/*   Updated: 2017/10/25 02:39:24 by thugo            ###   ########.fr       */
+/*   Updated: 2017/10/26 20:36:22 by thugo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ int	main(int argc, char **argv, char **env)
 	(void)argc;
 	ft_bzero(&data, sizeof(t_data));
 	env_init(&data, env);
+	signal_init();
 	while (!data.exit)
 		prompt(&data);
 	env_destroy(&data);

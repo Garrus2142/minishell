@@ -6,7 +6,7 @@
 /*   By: thugo <thugo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/25 01:55:07 by thugo             #+#    #+#             */
-/*   Updated: 2017/10/26 01:44:16 by thugo            ###   ########.fr       */
+/*   Updated: 2017/10/26 20:32:11 by thugo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,11 @@
 #include "libft.h"
 #include "minishell.h"
 
+pid_t	g_runpid = 0;
+
 static int	execute(t_data *data, char *path, char **args)
 {
 	char	stats;
-	pid_t	pid;
 	int		stat_loc;
 
 	stats = stats_check(path);
@@ -33,9 +34,10 @@ static int	execute(t_data *data, char *path, char **args)
 			ft_dprintf(2, "minishell: permission denied: %s\n", path);
 		return (127);
 	}
-	if (!(pid = fork()))
+if (!(g_runpid = fork()))
 		execve(path, args, data->envtab);
-	waitpid(pid, &stat_loc, 0);
+	waitpid(g_runpid, &stat_loc, 0);
+	g_runpid = 0;
 	if (WIFEXITED(stat_loc))
 		return (WEXITSTATUS(stat_loc));
 	else if (WIFSIGNALED(stat_loc))
