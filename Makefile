@@ -6,7 +6,7 @@
 #    By: thugo <thugo@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/10/18 15:00:09 by thugo             #+#    #+#              #
-#    Updated: 2017/10/25 21:42:40 by thugo            ###   ########.fr        #
+#    Updated: 2017/10/26 02:42:20 by thugo            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,10 +35,11 @@ $(NAME): $(OBJ)
 	@printf "\n"
 	@make -C libft
 	@printf "[\e[33m$(NAME)\e[0m] \e[34mBuild:\e[0m $(NAME)"
-	@gcc -Llibft -lft -o $(NAME) $(OBJ)
 ifeq ($(DEBUG), 1)
+	@gcc -fsanitize=address -Llibft -lft -o $(NAME) $(OBJ)
 	@printf " [\e[32mOK\e[0m][\e[33mDEBUG MODE\e[0m]\n"
 else
+	@gcc -Llibft -lft -o $(NAME) $(OBJ)
 	@printf " [\e[32mOK\e[0m]\n"
 endif
 
@@ -46,7 +47,7 @@ obj/%.o: src/%.c
 	@printf "[\e[33m$(NAME)\e[0m] \e[34mCompile:\e[0m $^\e[K\r"
 	@mkdir -p $(dir $@)
 ifeq ($(DEBUG), 1)
-	@gcc -g -I include -I libft -c $^ -o $@
+	@gcc -g -fsanitize=address -I include -I libft -c $^ -o $@
 else
 	@gcc $(FLAGS) -I include -I libft -c $^ -o $@
 endif
