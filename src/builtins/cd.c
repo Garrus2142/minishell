@@ -6,7 +6,7 @@
 /*   By: thugo <thugo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/25 02:43:07 by thugo             #+#    #+#             */
-/*   Updated: 2017/10/31 22:49:06 by thugo            ###   ########.fr       */
+/*   Updated: 2017/10/31 23:03:52 by thugo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ static int	can_change(char *path)
 	return (1);
 }
 
-char		*get_lpath(t_data *data, char *path)
+static char	*get_lpath(t_data *data, char *path)
 {
 	char	**splitpath;
 	char	*lpath;
@@ -63,7 +63,7 @@ char		*get_lpath(t_data *data, char *path)
 	return ((lpath = ft_strlen(lpath) ? lpath : ft_strfjoin(lpath, 1, "/", 0)));
 }
 
-int			changedir(t_data *data, char *path, char *cmd)
+static int	changedir(t_data *data, char *path, char *cmd)
 {
 	char	cwd[MAXPATHLEN];
 
@@ -81,7 +81,7 @@ int			changedir(t_data *data, char *path, char *cmd)
 	return (0);
 }
 
-char		*resolve_path(t_data *data, int argc, char **argv, int index)
+static char	*resolve_path(t_data *data, int argc, char **argv, int index)
 {
 	char	*path;
 
