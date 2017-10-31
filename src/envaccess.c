@@ -6,7 +6,7 @@
 /*   By: thugo <thugo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/24 17:25:41 by thugo             #+#    #+#             */
-/*   Updated: 2017/10/31 19:42:17 by thugo            ###   ########.fr       */
+/*   Updated: 2017/11/01 00:54:56 by thugo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,14 +63,15 @@ void		env_unset(t_data *data, const char *name)
 	prev = NULL;
 	while (cur)
 	{
-		if (ft_strcmp(name, ((t_env *)cur->content)->name) == 0)
+		if (ft_strcmp(name, ENV(cur)->name) == 0)
 		{
 			if (!prev)
 				data->env = cur->next;
 			else
-				prev = cur->next;
-			free(((t_env *)cur->content)->name);
-			free(((t_env *)cur->content)->value);
+				prev->next = cur->next;
+			free(ENV(cur)->name);
+			free(ENV(cur)->value);
+			free(cur->content);
 			free(cur);
 			break ;
 		}
