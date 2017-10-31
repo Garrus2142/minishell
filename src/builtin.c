@@ -6,7 +6,7 @@
 /*   By: thugo <thugo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/25 02:04:04 by thugo             #+#    #+#             */
-/*   Updated: 2017/10/25 21:44:20 by thugo            ###   ########.fr       */
+/*   Updated: 2017/10/31 22:56:40 by thugo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 #include "builtin.h"
 
 static t_builtin	g_builtins[] = {
-	{"pwd", builtin_pwd},
 	{"exit", builtin_exit},
 	{"cd", builtin_cd},
 	{"env", builtin_env},
