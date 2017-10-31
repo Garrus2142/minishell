@@ -6,7 +6,7 @@
 #    By: thugo <thugo@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/10/18 15:00:09 by thugo             #+#    #+#              #
-#    Updated: 2017/10/31 19:27:52 by thugo            ###   ########.fr        #
+#    Updated: 2017/10/31 22:55:39 by thugo            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,7 @@ SRC = main.c env.c envaccess.c prompt.c promptgit.c parser.c exec.c \
 BUILTINS = pwd.c exit.c cd.c env.c
 
 #Debug
-DEBUG = 1
+DEBUG = 2
 
 SRC += $(addprefix builtins/, $(BUILTINS))
 OBJ = $(addprefix obj/, $(SRC:.c=.o))
