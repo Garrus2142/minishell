@@ -6,7 +6,7 @@
 /*   By: thugo <thugo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/24 17:25:41 by thugo             #+#    #+#             */
-/*   Updated: 2017/10/31 17:54:55 by thugo            ###   ########.fr       */
+/*   Updated: 2017/10/31 19:42:17 by thugo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,9 +35,10 @@ void		env_set(t_data *data, const char *name, const char *value)
 	elem = data->env;
 	while (elem)
 	{
-		if (ft_strcmp(name, ((t_env *)elem->content)->name) == 0)
+		if (ft_strcmp(name, ENV(elem)->name) == 0)
 		{
-			if (!(((t_env *)elem->content)->value = ft_strdup(value)))
+			free(ENV(elem)->value);
+			if (!(ENV(elem)->value = ft_strdup(value)))
 				exit(EXIT_FAILURE);
 			env_make_array(data);
 			return ;
