@@ -6,7 +6,7 @@
 #    By: thugo <thugo@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/10/18 15:00:09 by thugo             #+#    #+#              #
-#    Updated: 2017/10/31 22:55:39 by thugo            ###   ########.fr        #
+#    Updated: 2017/11/01 00:01:55 by thugo            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,7 @@ SRC = main.c env.c envaccess.c prompt.c promptgit.c parser.c exec.c \
 	  builtin.c stats.c signal.c
 
 #Builtins
-BUILTINS = pwd.c exit.c cd.c env.c
+BUILTINS = exit.c cd.c env.c setenv.c
 
 #Debug
 DEBUG = 2
