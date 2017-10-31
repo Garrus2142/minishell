@@ -6,7 +6,7 @@
 /*   By: thugo <thugo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/25 02:04:04 by thugo             #+#    #+#             */
-/*   Updated: 2017/10/31 23:50:00 by thugo            ###   ########.fr       */
+/*   Updated: 2017/11/01 00:04:09 by thugo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ static t_builtin	g_builtins[] = {
 	{"cd", builtin_cd},
 	{"env", builtin_env},
 	{"setenv", builtin_setenv},
+	{"unsetenv", builtin_unsetenv},
 	{NULL, NULL}
 };
 
