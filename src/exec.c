@@ -6,7 +6,7 @@
 /*   By: thugo <thugo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/25 01:55:07 by thugo             #+#    #+#             */
-/*   Updated: 2017/10/26 20:32:11 by thugo            ###   ########.fr       */
+/*   Updated: 2017/11/01 03:22:36 by thugo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ static int	execute(t_data *data, char *path, char **args)
 			ft_dprintf(2, "minishell: permission denied: %s\n", path);
 		return (127);
 	}
-if (!(g_runpid = fork()))
+	if (!(g_runpid = fork()))
 		execve(path, args, data->envtab);
 	waitpid(g_runpid, &stat_loc, 0);
 	g_runpid = 0;
