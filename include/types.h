@@ -6,13 +6,14 @@
 /*   By: thugo <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/10 21:13:57 by thugo             #+#    #+#             */
-/*   Updated: 2017/11/01 01:32:19 by thugo            ###   ########.fr       */
+/*   Updated: 2017/11/01 17:56:56 by thugo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef TYPES_H
 # define TYPES_H
 
+# include <sys/types.h>
 # include "libft.h"
 
 typedef struct	s_env
@@ -28,6 +29,7 @@ typedef struct	s_data
 	char	exit;
 	char	*cwd;
 	int		exec_stat;
+	pid_t	runpid;
 }				t_data;
 
 typedef struct	s_builtin

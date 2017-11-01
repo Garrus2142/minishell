@@ -6,36 +6,30 @@
 /*   By: thugo <thugo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/26 20:32:41 by thugo             #+#    #+#             */
-/*   Updated: 2017/10/26 22:08:55 by thugo            ###   ########.fr       */
+/*   Updated: 2017/11/01 18:12:52 by thugo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 #include <signal.h>
+#include "minishell.h"
 
-extern pid_t	g_runpid;
+static t_data	*g_data;
 
-void	handle_sigint(int sig)
+void	handle_signal(int sig)
 {
-	if (g_runpid)
-		kill(g_runpid, SIGINT);
+	if (!g_data->runpid)
+	{
+		ft_putchar('\n');
+		g_data->exec_stat = 128 + sig;
+		prompt_print(g_data);
+	}
 }
 
-void	handle_sigquit(int sig)
+void	signal_init(t_data *data)
 {
-	if (g_runpid)
-		kill(g_runpid, SIGQUIT);
-}
-
-void	handle_siginfo(int sig)
-{
-	if (g_runpid)
-		kill(g_runpid, SIGINFO);
-}
-
-void	signal_init(void)
-{
-	signal(SIGINT, handle_sigint);
-	signal(SIGQUIT, handle_sigquit);
-	signal(SIGINFO, handle_siginfo);
+	g_data = data;
+	signal(SIGINT, handle_signal);
+	signal(SIGQUIT, handle_signal);
+	signal(SIGINFO, handle_signal);
 }

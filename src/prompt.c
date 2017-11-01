@@ -6,13 +6,14 @@
 /*   By: thugo <thugo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/23 19:48:01 by thugo             #+#    #+#             */
-/*   Updated: 2017/11/01 03:34:19 by thugo            ###   ########.fr       */
+/*   Updated: 2017/11/01 18:35:19 by thugo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 #include <stdlib.h>
 #include <sys/param.h>
+#include <signal.h>
 #include "libft.h"
 #include "minishell.h"
 
@@ -30,7 +31,7 @@ static void	free_cmds(char ****cmds)
 	free(*cmds);
 }
 
-static void	print_prompt(t_data *data)
+void		prompt_print(t_data *data)
 {
 	char	cwd[MAXPATHLEN];
 	char	*basename;
@@ -58,7 +59,7 @@ void		prompt(t_data *data)
 	int		i;
 
 	line = NULL;
-	print_prompt(data);
+	prompt_print(data);
 	if (ft_gnl(STDIN_FILENO, &line) < 1)
 	{
 		data->exit = 1;
@@ -71,23 +72,10 @@ void		prompt(t_data *data)
 	{
 		if (cmds[i][0])
 			exec_execute(data, cmds[i]);
+		if (data->exec_stat == 128 + SIGINT)
+			break ;
 		++i;
 	}
 	free_cmds(&cmds);
 	free(line);
 }
-
-/*int i = 0;
-	int u = 0;
-	while (cmds[i])
-	{
-		ft_printf("Name: %s Args: ", cmds[i][0]);
-		u = 0;
-		while (cmds[i][u])
-		{
-			ft_printf("%s ", cmds[i][u]);
-			++u;
-		}
-		ft_printf("\n");
-		++i;
-}*/
