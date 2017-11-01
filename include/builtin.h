@@ -6,7 +6,7 @@
 /*   By: thugo <thugo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/25 02:03:36 by thugo             #+#    #+#             */
-/*   Updated: 2017/10/31 22:59:38 by thugo            ###   ########.fr       */
+/*   Updated: 2017/11/01 19:04:28 by thugo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,5 +21,6 @@ int		builtin_cd(t_data *data, int argc, char **argv);
 int		builtin_env(t_data *data, int argc, char **argv);
 int		builtin_setenv(t_data *data, int argc, char **argv);
 int		builtin_unsetenv(t_data *data, int argc, char **argv);
+int		builtin_echo(t_data *data, int argc, char **argv);
 
 #endif
