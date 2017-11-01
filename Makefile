@@ -6,7 +6,7 @@
 #    By: thugo <thugo@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/10/18 15:00:09 by thugo             #+#    #+#              #
-#    Updated: 2017/11/01 00:56:01 by thugo            ###   ########.fr        #
+#    Updated: 2017/11/01 03:24:53 by thugo            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ FLAGS = -Werror -Wextra -Wall
 
 #Sources
 SRC = main.c env.c envaccess.c prompt.c promptgit.c parser.c exec.c \
-	  builtin.c stats.c signal.c
+	  builtin.c stats.c signal.c cwd.c
 
 #Builtins
 BUILTINS = exit.c cd.c env.c setenv.c unsetenv.c

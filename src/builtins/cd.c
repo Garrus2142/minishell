@@ -6,7 +6,7 @@
 /*   By: thugo <thugo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/25 02:43:07 by thugo             #+#    #+#             */
-/*   Updated: 2017/10/31 23:03:52 by thugo            ###   ########.fr       */
+/*   Updated: 2017/11/01 03:19:40 by thugo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,11 +73,7 @@ static int	changedir(t_data *data, char *path, char *cmd)
 		env_set(data, "OLDPWD", getcwd(cwd, MAXPATHLEN));
 	else
 		env_set(data, "OLDPWD", env_get(data, "PWD"));
-	chdir(path);
-	if (path[0] == '/')
-		env_set(data, "PWD", path);
-	else
-		env_set(data, "PWD", getcwd(cwd, MAXPATHLEN));
+	cwd_change(data, path);
 	return (0);
 }
 

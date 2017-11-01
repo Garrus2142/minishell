@@ -6,7 +6,7 @@
 /*   By: thugo <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/10 21:13:57 by thugo             #+#    #+#             */
-/*   Updated: 2017/10/25 15:31:45 by thugo            ###   ########.fr       */
+/*   Updated: 2017/11/01 01:32:19 by thugo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ typedef struct	s_data
 	t_list	*env;
 	char	**envtab;
 	char	exit;
+	char	*cwd;
 	int		exec_stat;
 }				t_data;
 

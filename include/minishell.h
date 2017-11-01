@@ -6,7 +6,7 @@
 /*   By: thugo <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/09 14:59:46 by thugo             #+#    #+#             */
-/*   Updated: 2017/10/26 20:36:10 by thugo            ###   ########.fr       */
+/*   Updated: 2017/11/01 03:18:19 by thugo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,10 @@ void			parse_line(char ****cmds, char *line);
 void			exec_execute(t_data *data, char **cmd);
 int				builtin_execute(t_data *data, char **cmd);
 char			stats_check(const char *path);
+int				stats_filecmp(const char *p1, const char *p2);
 void			signal_init(void);
+void			cwd_init(t_data *data);
+void			cwd_change(t_data *data, const char *path);
+void			cwd_destroy(t_data *data);
 
 #endif

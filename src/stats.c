@@ -6,7 +6,7 @@
 /*   By: thugo <thugo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/25 17:53:40 by thugo             #+#    #+#             */
-/*   Updated: 2017/10/25 19:41:34 by thugo            ###   ########.fr       */
+/*   Updated: 2017/11/01 02:50:57 by thugo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,4 +40,16 @@ char		stats_check(const char *path)
 	if ((stats & STATS_EXIST))
 		stats_retrieve(path, &stats);
 	return (stats);
+}
+
+int			stats_filecmp(const char *p1, const char *p2)
+{
+	struct stat	st1;
+	struct stat	st2;
+
+	if (stat(p1, &st1) || stat(p2, &st2))
+		return (0);
+	if (st1.st_dev == st2.st_dev && st1.st_ino == st2.st_ino)
+		return (1);
+	return (0);
 }
