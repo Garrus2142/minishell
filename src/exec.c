@@ -6,17 +6,39 @@
 /*   By: thugo <thugo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/25 01:55:07 by thugo             #+#    #+#             */
-/*   Updated: 2017/11/01 03:22:36 by thugo            ###   ########.fr       */
+/*   Updated: 2017/11/01 17:12:43 by thugo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include <unistd.h>
 #include <dirent.h>
+#include <signal.h>
 #include "libft.h"
 #include "minishell.h"
 
 pid_t	g_runpid = 0;
+
+static int	print_signal(int sig)
+{
+	if (sig == SIGQUIT)
+		ft_putstr_fd("Quit\n", 2);
+	else if (sig == SIGILL)
+		ft_putstr_fd("Illegal instruction\n", 2);
+	else if (sig == SIGABRT)
+		ft_putstr_fd("Abort\n", 2);
+	else if (sig == SIGKILL)
+		ft_putstr_fd("Killed\n", 2);
+	else if (sig == SIGBUS)
+		ft_putstr_fd("Bus error\n", 2);
+	else if (sig == SIGSEGV)
+		ft_putstr_fd("Segmentation fault\n", 2);
+	else if (sig == SIGPIPE)
+		ft_putstr_fd("Broken pipe\n", 2);
+	else if (sig == SIGALRM)
+		ft_putstr_fd("Alarm clock\n", 2);
+	return (128 + sig);
+}
 
 static int	execute(t_data *data, char *path, char **args)
 {
@@ -41,7 +63,7 @@ static int	execute(t_data *data, char *path, char **args)
 	if (WIFEXITED(stat_loc))
 		return (WEXITSTATUS(stat_loc));
 	else if (WIFSIGNALED(stat_loc))
-		return (128 + WTERMSIG(stat_loc));
+		return (print_signal(WTERMSIG(stat_loc)));
 	return (0);
 }
 
