@@ -6,7 +6,7 @@
 /*   By: thugo <thugo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/23 19:48:01 by thugo             #+#    #+#             */
-/*   Updated: 2017/10/26 03:42:13 by thugo            ###   ########.fr       */
+/*   Updated: 2017/11/01 03:34:19 by thugo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,9 +36,14 @@ static void	print_prompt(t_data *data)
 	char	*basename;
 	char	*git;
 
-	if (!(basename = ft_basename(getcwd(cwd, MAXPATHLEN))))
+	if (!data->cwd)
+	{
+		ft_printf("\e[%sm%S\e[0m  ", data->exec_stat ? "91" : "92", L"➜");
+		return ;
+	}
+	if (!(basename = ft_basename(data->cwd)))
 		exit(EXIT_FAILURE);
-	if (!(git = promptgit_get(cwd)))
+	if (!(git = promptgit_get(getcwd(cwd, MAXPATHLEN))))
 		exit(EXIT_FAILURE);
 	ft_printf("\e[%sm%S\e[0m  \e[1m%s\e[0m %s", data->exec_stat ?
 		"91" : "92", L"➜", basename, git);
