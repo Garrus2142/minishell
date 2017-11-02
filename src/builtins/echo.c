@@ -6,7 +6,7 @@
 /*   By: thugo <thugo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/01 19:05:57 by thugo             #+#    #+#             */
-/*   Updated: 2017/11/01 20:20:45 by thugo            ###   ########.fr       */
+/*   Updated: 2017/11/02 02:48:30 by thugo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ int	builtin_echo(t_data *data, int argc, char **argv)
 	int	i;
 	int	nonl;
 
+	(void)data;
 	i = 1;
 	nonl = 0;
 	while (i < argc)

@@ -6,7 +6,7 @@
 /*   By: thugo <thugo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/25 02:35:33 by thugo             #+#    #+#             */
-/*   Updated: 2017/11/01 22:13:40 by thugo            ###   ########.fr       */
+/*   Updated: 2017/11/02 02:48:12 by thugo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,6 @@
 
 int		builtin_exit(t_data *data, int argc, char **argv)
 {
-	int	i;
-
 	if (argc == 1)
 	{
 		data->exit = 1;
