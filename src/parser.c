@@ -6,7 +6,7 @@
 /*   By: thugo <thugo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/23 21:22:12 by thugo             #+#    #+#             */
-/*   Updated: 2017/10/26 03:42:24 by thugo            ###   ########.fr       */
+/*   Updated: 2017/11/02 02:46:09 by thugo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static void	parse_cmd(char ***cmd, char *fullcmd)
 	size_t	len;
 	size_t	i;
 
-	if (!(cmdsplit = ft_strsplit(fullcmd, ' ')))
+	if (!(cmdsplit = ft_strsplits(fullcmd, " \t")))
 		exit(EXIT_FAILURE);
 	len = ft_tabptrlen((void **)cmdsplit);
 	if (!(*cmd = (char **)malloc(sizeof(char *) * (len + 1))))
