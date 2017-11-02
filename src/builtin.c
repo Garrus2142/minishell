@@ -6,7 +6,7 @@
 /*   By: thugo <thugo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/25 02:04:04 by thugo             #+#    #+#             */
-/*   Updated: 2017/11/01 19:05:29 by thugo            ###   ########.fr       */
+/*   Updated: 2017/11/02 03:24:06 by thugo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int		builtin_execute(t_data *data, char **cmd)
 	i = 0;
 	while (g_builtins[i].name)
 	{
-		if (strcmp(cmd[0], g_builtins[i].name) == 0)
+		if (ft_strcmp(cmd[0], g_builtins[i].name) == 0)
 		{
 			data->exec_stat = g_builtins[i].fn(data,
 				ft_tabptrlen((void **)cmd), cmd);
