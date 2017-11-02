@@ -6,7 +6,7 @@
 /*   By: thugo <thugo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/23 19:48:01 by thugo             #+#    #+#             */
-/*   Updated: 2017/11/01 18:35:19 by thugo            ###   ########.fr       */
+/*   Updated: 2017/11/02 02:04:43 by thugo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ void		prompt(t_data *data)
 	while (cmds[i])
 	{
 		if (cmds[i][0])
-			exec_execute(data, cmds[i]);
+			exec_execute(data, cmds[i], NULL);
 		if (data->exec_stat == 128 + SIGINT)
 			break ;
 		++i;

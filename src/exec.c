@@ -6,7 +6,7 @@
 /*   By: thugo <thugo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/25 01:55:07 by thugo             #+#    #+#             */
-/*   Updated: 2017/11/01 17:57:46 by thugo            ###   ########.fr       */
+/*   Updated: 2017/11/02 02:11:18 by thugo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,12 +46,13 @@ static int	execute(t_data *data, char *path, char **args)
 	stats = stats_check(path);
 	if (!(stats & STATS_EXIST) || !(stats & STATS_EXEC) || (stats & STATS_DIR))
 	{
+		ft_putstr_fd(data->namesh, 2);
 		if (!(stats & STATS_EXIST))
-			ft_dprintf(2, "minishell: no such file or directory: %s\n", path);
+			ft_dprintf(2, ": no such file or directory: %s\n", path);
 		else if ((stats & STATS_DIR))
-			ft_dprintf(2, "minishell: is a directory: %s\n", path);
+			ft_dprintf(2, ": is a directory: %s\n", path);
 		else if (!(stats & STATS_EXEC))
-			ft_dprintf(2, "minishell: permission denied: %s\n", path);
+			ft_dprintf(2, ": permission denied: %s\n", path);
 		return (127);
 	}
 	if (!(data->runpid = fork()))
@@ -91,15 +92,18 @@ static char	*find_cmd(char *path, char *name)
 	return (cmdpath);
 }
 
-static char	*find_path(t_data *data, char *name)
+static char	*find_path(t_data *data, char *name, char *recoverpath)
 {
 	char			**paths;
 	char			*path;
+	char			*envpath;
 	int				i;
 
-	if (!env_get(data, "PATH"))
+	if (!(envpath = env_get(data, "PATH")))
+		envpath = recoverpath;
+	if (!envpath)
 		return (NULL);
-	if (!(paths = ft_strsplit(env_get(data, "PATH"), ':')))
+	if (!(paths = ft_strsplit(envpath, ':')))
 		exit(EXIT_FAILURE);
 	path = NULL;
 	i = 0;
@@ -109,7 +113,7 @@ static char	*find_path(t_data *data, char *name)
 	return (path);
 }
 
-void		exec_execute(t_data *data, char **cmd)
+void		exec_execute(t_data *data, char **cmd, char *recoverpath)
 {
 	char	*path;
 
@@ -117,11 +121,11 @@ void		exec_execute(t_data *data, char **cmd)
 		return ;
 	else if (ft_strchr(cmd[0], '/'))
 		data->exec_stat = execute(data, cmd[0], cmd);
-	else if ((path = find_path(data, cmd[0])))
+	else if ((path = find_path(data, cmd[0], recoverpath)))
 	{
 		data->exec_stat = execute(data, path, cmd);
 		free(path);
 	}
 	else
-		ft_dprintf(2, "minishell: command not found: %s\n", cmd[0]);
+		ft_dprintf(2, "%s: command not found: %s\n", data->namesh, cmd[0]);
 }

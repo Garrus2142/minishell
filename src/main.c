@@ -6,7 +6,7 @@
 /*   By: thugo <thugo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/18 16:29:20 by thugo             #+#    #+#             */
-/*   Updated: 2017/11/01 22:14:11 by thugo            ###   ########.fr       */
+/*   Updated: 2017/11/02 02:14:45 by thugo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,13 +35,14 @@ static void	shlvl(t_data *data)
 	}
 }
 
-int	main(int argc, char **argv, char **env)
+int			main(int argc, char **argv, char **env)
 {
 	t_data	data;
 
 	(void)argv;
 	(void)argc;
 	ft_bzero(&data, sizeof(t_data));
+	ft_strcpy(data.namesh, "minishell");
 	env_init(&data, env);
 	cwd_init(&data);
 	signal_init(&data);

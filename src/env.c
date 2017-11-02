@@ -6,7 +6,7 @@
 /*   By: thugo <thugo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/18 16:29:10 by thugo             #+#    #+#             */
-/*   Updated: 2017/10/25 01:32:02 by thugo            ###   ########.fr       */
+/*   Updated: 2017/11/02 00:37:22 by thugo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,16 +48,19 @@ void		env_init(t_data *data, char **environ)
 	t_env	envdata;
 
 	i = -1;
-	while (environ[++i])
+	if (environ)
 	{
-		if (!(envdata.name = ft_strndup(environ[i], ft_strchr(environ[i], '=')
-						- environ[i])))
-			exit(EXIT_FAILURE);
-		if (!(envdata.value = ft_strdup(ft_strchr(environ[i], '=') + 1)))
-			exit(EXIT_FAILURE);
-		if (!(new = ft_lstnew(&envdata, sizeof(envdata))))
-			exit(EXIT_FAILURE);
-		ft_lstadd(&(data->env), new);
+		while (environ[++i])
+		{
+			if (!(envdata.name = ft_strndup(environ[i],
+					ft_strchr(environ[i], '=') - environ[i])))
+				exit(EXIT_FAILURE);
+			if (!(envdata.value = ft_strdup(ft_strchr(environ[i], '=') + 1)))
+				exit(EXIT_FAILURE);
+			if (!(new = ft_lstnew(&envdata, sizeof(envdata))))
+				exit(EXIT_FAILURE);
+			ft_lstadd(&(data->env), new);
+		}
 	}
 	env_make_array(data);
 }

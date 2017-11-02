@@ -6,7 +6,7 @@
 /*   By: thugo <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/09 14:59:46 by thugo             #+#    #+#             */
-/*   Updated: 2017/11/01 17:19:47 by thugo            ###   ########.fr       */
+/*   Updated: 2017/11/02 01:50:42 by thugo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void			prompt(t_data *data);
 void			prompt_print(t_data *data);
 char			*promptgit_get(const char *cwd);
 void			parse_line(char ****cmds, char *line);
-void			exec_execute(t_data *data, char **cmd);
+void			exec_execute(t_data *data, char **cmd, char *recoverpath);
 int				builtin_execute(t_data *data, char **cmd);
 char			stats_check(const char *path);
 int				stats_filecmp(const char *p1, const char *p2);
