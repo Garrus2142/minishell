@@ -6,7 +6,7 @@
 /*   By: thugo <thugo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/01 01:37:11 by thugo             #+#    #+#             */
-/*   Updated: 2017/11/01 03:18:31 by thugo            ###   ########.fr       */
+/*   Updated: 2018/03/15 00:23:56 by thugo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void		cwd_init(t_data *data)
 	stats = 0;
 	if ((data->cwd = getcwd(NULL, 0)))
 		stats = stats_check(data->cwd);
-	if (!data->cwd || !(stats & STATS_EXEC) || (!stats & STATS_EXIST))
+	if (!data->cwd || !(stats & STATS_EXEC) || !(stats & STATS_EXIST))
 	{
 		if (!(stats & STATS_EXIST))
 			ft_putstr_fd("minishell: No such file or directory\n", 2);
